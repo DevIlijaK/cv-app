@@ -9,6 +9,7 @@ import { Home } from "lucide-react";
 import Link from "next/link";
 import ResponsiveCompoent from "../responsive-component";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 
 const getIcon = (icon) => {
   switch (icon) {
@@ -33,6 +34,11 @@ const getIcon = (icon) => {
       return <Home className="w-full h-auto" strokeWidth={1.5} />;
   }
 };
+const item = {
+  hidden: { scale: 0 },
+  show: { scale: 1 },
+};
+const NavLink = motion(Link);
 export const NavButton = ({
   x,
   y,
@@ -52,7 +58,8 @@ export const NavButton = ({
               transform: `translate(${x}, ${y})`,
             }}
           >
-            <Link
+            <NavLink
+              variants={item}
               className="text-foreground rounded-full flex items-center justify-center custom-bg"
               aria-label={label}
               href={link}
@@ -69,11 +76,12 @@ export const NavButton = ({
                   {label}
                 </span>
               </span>
-            </Link>
+            </NavLink>
           </div>
         ) : (
           <div className="w-fit cursor-pointer z-50">
-            <Link
+            <NavLink
+              variants={item}
               className="text-foreground rounded-full flex items-center justify-center custom-bg"
               aria-label={label}
               href={link}
@@ -92,7 +100,7 @@ export const NavButton = ({
                   {label}
                 </span>
               </span>
-            </Link>
+            </NavLink>
           </div>
         );
       }}
