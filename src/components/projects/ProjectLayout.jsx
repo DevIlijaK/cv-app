@@ -1,8 +1,16 @@
+import { motion } from "framer-motion";
 import Link from "next/link";
+
+const item = {
+  hidden: { opacity: 0, y: 100 },
+  show: { opacity: 1, y: 0 },
+};
+const NavLink = motion(Link);
 
 export const ProjectLayout = ({ name, description, date, demoLink }) => {
   return (
-    <Link
+    <NavLink
+      variants={item}
       target={"_blank"}
       href={demoLink}
       className="flex text-sm md:text-base cursor-pointer justify-between items-center w-full relative rounded-lg overflow-hidden p-4 md:p-6 custom-bg"
@@ -15,6 +23,6 @@ export const ProjectLayout = ({ name, description, date, demoLink }) => {
       <p className="text-muted sm:text-foreground">
         {new Date(date).toDateString()}
       </p>
-    </Link>
+    </NavLink>
   );
 };

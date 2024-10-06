@@ -15,6 +15,7 @@ export default function About() {
         className="-z-50 fixed top-0 left-0 w-full h-screen object-cover object-center opacity-25"
       />
       <div className="w-full h-3/5 xs:h-3/4 sm:h-screen absolute top-1/2 -translate-y-1/2 left-0">
+        {/* <div className="w-full h-3/5 xs:h-3/4 sm:h-screen"> */}
         <RenderModel>
           <LichKingHelmetModel />
         </RenderModel>

@@ -1,9 +1,16 @@
+"use client";
+import { motion } from "framer-motion";
 import { Home } from "lucide-react";
 import Link from "next/link";
 
+const NavLink = motion(Link);
+
 export const HomeButton = () => {
   return (
-    <Link
+    <NavLink
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ delay: 1 }}
       className="text-foreground rounded-full flex items-center justify-center custom-bg
       fixed top-8 left-10 w-fit self-start z-50"
       aria-label={"home"}
@@ -20,6 +27,6 @@ export const HomeButton = () => {
           Home
         </span>
       </span>
-    </Link>
+    </NavLink>
   );
 };
