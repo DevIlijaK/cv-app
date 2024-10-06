@@ -14,7 +14,6 @@ export function SuraModel(props) {
     }
   }, [actions]);
 
-  console.log("akcije su: ", actions);
   return (
     <group
       ref={group}

@@ -1,7 +1,7 @@
 "use client ";
 import React from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
-import * as THREE from "three";
+import { useFrame } from "@react-three/fiber";
 
 export default function LichKingHelmetModel(props) {
   const group = React.useRef();
@@ -10,24 +10,9 @@ export default function LichKingHelmetModel(props) {
   );
   const { actions } = useAnimations(animations, group);
 
-  React.useEffect(() => {
-    if (!actions) return;
-
-    const playAnimations = () => {
-      const action = actions["Take 001"]; // Access the animation action
-      action.reset().fadeIn(0.2).play();
-
-      // Set the animation to loop
-      action.setLoop(THREE.LoopRepeat);
-    };
-
-    playAnimations();
-  }, [actions]);
-
-  // useFrame((state, delta) => {
-  //   console.log("actions: ", actions);
-  //   group.current.rotation.y += 0.007;
-  // });
+  useFrame((state, delta) => {
+    group.current.rotation.y += 0.007;
+  });
   return (
     <group
       ref={group}

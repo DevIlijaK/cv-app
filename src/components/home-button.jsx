@@ -1,11 +1,11 @@
 import { Home } from "lucide-react";
 import Link from "next/link";
 
-export const HomeButton = ({ x, y, label, link, icon, newTab }) => {
+export const HomeButton = () => {
   return (
     <Link
       className="text-foreground rounded-full flex items-center justify-center custom-bg
-      fixed top-8 left-10 w-fit self-start"
+      fixed top-8 left-10 w-fit self-start z-50"
       aria-label={"home"}
       href={"/"}
       name={"home"}
@@ -17,7 +17,7 @@ export const HomeButton = ({ x, y, label, link, icon, newTab }) => {
           className="absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2
         bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap"
         >
-          {label}
+          Home
         </span>
       </span>
     </Link>

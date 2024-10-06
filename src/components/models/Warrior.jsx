@@ -16,7 +16,6 @@ export function WarriorModel(props) {
   useEffect(() => {
     if (!actions) return;
 
-    // Function to play animations in sequence and loop them infinitely
     const playAnimations = () => {
       actions.onehand_idle.reset().fadeIn(0.5).play();
 
@@ -28,7 +27,7 @@ export function WarriorModel(props) {
       const runTimeout = setTimeout(() => {
         actions.Intro_wait.fadeOut(0.5);
         actions.Run.reset().fadeIn(0.5).play();
-        setIsRunning(true); // Set state to indicate "Run" animation is active
+        setIsRunning(true);
       }, 6000);
 
       const selectedTimeout = setTimeout(() => {
