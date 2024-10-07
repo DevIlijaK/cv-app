@@ -18,7 +18,7 @@ export default function WarriorModel(props) {
       actions.onehand_idle.reset().fadeIn(0.5).play();
 
       const introWaitTimeout = setTimeout(() => {
-        actions.onehand_idle.fadeOut(0.5); // Smooth fade out
+        actions.onehand_idle.fadeOut(0.5);
         actions.Intro_wait.reset().fadeIn(0.5).play();
       }, 3000);
 
@@ -29,23 +29,26 @@ export default function WarriorModel(props) {
       }, 6000);
 
       const selectedTimeout = setTimeout(() => {
-        setIsRunning(false); // Stop running
+        setIsRunning(false);
         actions.Run.fadeOut(0.5);
-        playAnimations(); // Loop back to the beginning of the animation cycle
-      }, 9200); // Total cycle time
+        playAnimations();
+      }, 9200);
 
-      // Cleanup function to clear timeouts when the component unmounts or re-renders
       return () => {
-        clearTimeout(introWaitTimeout);
-        clearTimeout(runTimeout);
-        clearTimeout(selectedTimeout);
+        if (introWaitTimeout) {
+          clearTimeout(introWaitTimeout);
+        }
+        if (runTimeout) {
+          clearTimeout(runTimeout);
+        }
+        if (selectedTimeout) {
+          clearTimeout(selectedTimeout);
+        }
       };
     };
 
-    // Start the animation cycle
     const cleanupTimeouts = playAnimations();
 
-    // Cleanup on unmount or when actions change
     return cleanupTimeouts;
   }, [actions]);
 
