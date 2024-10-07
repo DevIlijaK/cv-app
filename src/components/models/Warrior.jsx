@@ -56,7 +56,7 @@ export default function WarriorModel(props) {
     } else {
       group.current.rotation.y = Math.sin(time * 2) * 0.05;
     }
-    group.current.position.y = -3.5 + Math.sin(time) * 0.1;
+    group.current.position.y = -4 + Math.sin(time) * 0.1;
   });
   useFrame((state, delta) => {
     const time = state.clock.getElapsedTime();

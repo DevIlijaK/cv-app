@@ -66,7 +66,7 @@ export const NavButton = ({
               target={newTab ? "_blank" : "_self"}
               name={label}
             >
-              <span className="relative w-14 h-14 p-4 animate-spin-slow-reverse group-hover:pause hover:text-accent">
+              <span className="relative w-16 h-16 p-4 animate-spin-slow-reverse group-hover:pause hover:text-accent">
                 {getIcon(icon)}
                 <span className="peer bg-transparent absolute top-0 left-0 w-full h-full" />
                 <span
@@ -88,7 +88,7 @@ export const NavButton = ({
               target={newTab ? "_blank" : "_self"}
               name={label}
             >
-              <span className="relative w-10 h-10 xs:w-14 xs:h-14 p-2.5 xs:p-4 hover:text-accent">
+              <span className="relative w-12 h-12 p-2.5 xs:p-4 hover:text-accent">
                 {getIcon(icon)}
                 <span className="peer bg-transparent absolute top-0 left-0 w-full h-full" />
                 <span
