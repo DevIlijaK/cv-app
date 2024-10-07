@@ -4,7 +4,7 @@ import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 
-export function FullMoonSwordModel(props) {
+export default function FullMoonSwordModel(props) {
   const sword = useRef();
   const { nodes, materials } = useGLTF("/models/full-moon-sword.glb");
   useFrame((state, delta) => {

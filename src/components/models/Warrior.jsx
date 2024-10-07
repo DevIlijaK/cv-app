@@ -4,14 +4,12 @@ import { useRef, useEffect, useState } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
-export function WarriorModel(props) {
+export default function WarriorModel(props) {
   const group = useRef();
   const test = useRef();
   const { nodes, materials, animations } = useGLTF("/models/warrior.glb");
   const { actions } = useAnimations(animations, group);
   const [isRunning, setIsRunning] = useState(false);
-
-  console.log("akcije su: ", actions);
 
   useEffect(() => {
     if (!actions) return;

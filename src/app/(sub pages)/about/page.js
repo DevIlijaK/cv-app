@@ -3,13 +3,22 @@ import { FireFliesbackground } from "@/components/FireFliesBackground";
 import Image from "next/image";
 import bg from "../../../../public/background/about-background.png";
 import { RenderModel } from "@/components/render-model";
-import LichKingHelmetModel from "@/components/models/LichKingHelmet";
 import { AboutDetails } from "@/components/about";
+import dynamic from "next/dynamic";
+
+const LichKingHelmetModel = dynamic(
+  () => import("@/components/models/LichKingHelmet"),
+  {
+    ssr: false,
+  }
+);
 
 export default function About() {
   return (
     <>
       <Image
+        priority
+        sizes="100vw"
         src={bg}
         alt="background-image"
         className="-z-50 fixed top-0 left-0 w-full h-screen object-cover object-center opacity-25"

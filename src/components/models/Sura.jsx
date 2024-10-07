@@ -3,7 +3,7 @@
 import { useRef, useEffect } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
-export function SuraModel(props) {
+export default function SuraModel(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/sura.glb");
   const { actions } = useAnimations(animations, group);

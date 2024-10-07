@@ -3,13 +3,20 @@ import Image from "next/image";
 import bg from "../../../../public/background/projects-background.png";
 import { ProjectList } from "@/components/projects";
 import { RenderModel } from "@/components/render-model";
-import { FullMoonSwordModel } from "@/components/models/FullMoonSword";
 import { projectsData } from "@/app/data";
+import dynamic from "next/dynamic";
+
+const FullMoonSwordModel = dynamic(
+  () => import("@/components/models/FullMoonSword"),
+  { ssr: false }
+);
 
 export default function Home() {
   return (
     <>
       <Image
+        priority
+        sizes="100vw"
         src={bg}
         alt="background-image"
         className="-z-50 fixed top-0 left-0 w-full h-screen object-cover object-center opacity-25"
