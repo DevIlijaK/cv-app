@@ -14,24 +14,32 @@ export const AboutDetails = () => {
             Architect of Enchantment
           </h2>
           <p className="font-light text-xs sm:text-sm md:text-base">
-            klasjdlksajd lkajsdlkajsdlk lkajsdlkjasd lkajsdlkasjdlk
-            aksjdlkasalksdj klasjdklajs lkasjdlkasjdlk askldjaslkdj
-            laksjdlkasdjl lkajsdklajsd laksjdklasjdlkjas lkajsdlkjaskdl
-            alksjdaklsdj jskaj jsj sjsajj sjasjd sjajowqe
+            In the ancient scrolls of JavaScript, it is said that the Architect
+            once whispered to the variables, and they aligned themselves
+            perfectly with the stars of the DOM. With a mere flick of his IDE,
+            functions unfold like enchanted spells, conjuring APIs from the void
+            and rendering pixels as if summoned by digital sorcery. Legend has
+            it that his code is so clean, the bugs themselves refuse to tread
+            near it—except for that one mythical bug that only appears at 2 AM
+            under a full moon, haunting the error logs with cryptic messages
+            like &quot;undefined is not a function.&quot; But fear not, for the
+            Architect&apos;s debugging prowess is as swift as his touch on the
+            keyboard, guiding lost bits and bytes back to harmony in the cosmic
+            grid of the cloud.
           </p>
         </ItemLayout>
         <ItemLayout
           className={"col-span-full xs:col-span-6 lg:col-span-4 text-accent"}
         >
           <p className="font-semibold w-full text-left text-2xl sm:text-5xl">
-            25+ <sub className="font-semibold text-base">clients</sub>
+            25+ <sub className="font-semibold text-base">good friends</sub>
           </p>
         </ItemLayout>
         <ItemLayout
           className={"col-span-full xs:col-span-6 lg:col-span-4 text-accent"}
         >
           <p className="font-semibold w-full text-left text-2xl sm:text-5xl">
-            4+{" "}
+            2+
             <sub className="font-semibold text-base">years of experience</sub>
           </p>
         </ItemLayout>
