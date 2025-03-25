@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ilijakosanin.com
+
+# Sitemaps
+Sitemap: https://ilijakosanin.com/sitemap.xml

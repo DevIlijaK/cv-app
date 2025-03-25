@@ -96,7 +96,7 @@ export const BtnList = [
   },
   {
     label: "LinkedIn",
-    link: "www.linkedin.com/in/ilija-košanin",
+    link: "https://www.linkedin.com/in/ilija-ko%C5%A1anin/",
     icon: "linkedin",
     newTab: true,
   },
