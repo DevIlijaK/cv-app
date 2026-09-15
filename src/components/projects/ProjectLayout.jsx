@@ -16,12 +16,12 @@ export const ProjectLayout = ({ name, description, date, demoLink }) => {
       href={demoLink}
       className="flex text-sm md:text-base cursor-pointer justify-between items-center w-full relative rounded-lg overflow-hidden p-4 md:p-6 custom-bg"
     >
-      <div className="flex items-center justify-center space-x-2">
-        <h2 className="text-foreground">{name}</h2>
+      <div className="flex items-baseline space-x-2 min-w-0">
+        <h2 className="text-foreground whitespace-nowrap">{name}</h2>
         <p className="text-muted hidden sm:inline-block">{description}</p>
       </div>
-      <div className="self-end flex-1 mx-2 mb-1 bg-transparent border-b border-dashed border-muted" />
-      <p className="text-muted sm:text-foreground">
+      <div className="self-end flex-1 min-w-4 mx-2 mb-1 bg-transparent border-b border-dashed border-muted" />
+      <p className="text-muted sm:text-foreground whitespace-nowrap shrink-0">
         {new Date(date).toLocaleDateString("en-US", {
           month: "short",
           year: "numeric",
