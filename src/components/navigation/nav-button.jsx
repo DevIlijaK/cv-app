@@ -1,11 +1,14 @@
-import { User } from "lucide-react";
-import { Phone } from "lucide-react";
-import { Linkedin } from "lucide-react";
-import { NotebookText } from "lucide-react";
-import { Twitter } from "lucide-react";
-import { Github } from "lucide-react";
-import { Palette } from "lucide-react";
-import { Home } from "lucide-react";
+import {
+  Github,
+  Home,
+  Instagram,
+  Linkedin,
+  NotebookText,
+  Palette,
+  Phone,
+  Twitter,
+  User,
+} from "lucide-react";
 import Link from "next/link";
 import ResponsiveCompoent from "../responsive-component";
 import clsx from "clsx";
@@ -27,6 +30,8 @@ const getIcon = (icon) => {
       return <Linkedin className="w-full h-auto" strokeWidth={1.5} />;
     case "twitter":
       return <Twitter className="w-full h-auto" strokeWidth={1.5} />;
+    case "instagram":
+      return <Instagram className="w-full h-auto" strokeWidth={1.5} />;
     case "resume":
       return <NotebookText className="w-full h-auto" strokeWidth={1.5} />;
 
@@ -64,7 +69,7 @@ export const NavButton = ({
               aria-label={label}
               href={link}
               target={newTab ? "_blank" : "_self"}
-              name={label}
+              rel={newTab ? "noopener noreferrer" : undefined}
             >
               <span className="relative w-16 h-16 p-4 animate-spin-slow-reverse group-hover:pause hover:text-accent">
                 {getIcon(icon)}
@@ -86,7 +91,7 @@ export const NavButton = ({
               aria-label={label}
               href={link}
               target={newTab ? "_blank" : "_self"}
-              name={label}
+              rel={newTab ? "noopener noreferrer" : undefined}
             >
               <span className="relative w-12 h-12 p-2.5 xs:p-4 hover:text-accent">
                 {getIcon(icon)}

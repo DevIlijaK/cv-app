@@ -5,6 +5,7 @@ import { VolumeX } from "lucide-react";
 import { Volume2 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { basePath } from "@/app/data";
 
 const Modal = ({ onClose, toggle }) => {
   return createPortal(
@@ -13,7 +14,7 @@ const Modal = ({ onClose, toggle }) => {
         className="bg-background/20 border border-accent/30 border-solid backdrop-blur-[6px] 
           py-8 px-6 xs:px-8 sm:px-16 rounded shadow-glass-inset text-center space-y-16"
       >
-        <p className="font-light">Do you like to play background music?</p>
+        <p className="font-light">Would you like to play background music?</p>
 
         <div className="flex items-center justify-center space-x-4">
           <button
@@ -40,41 +41,52 @@ export const Sound = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showModal, setShowModal] = useState(false);
   useEffect(() => {
+    const events = ["click", "keydown", "touchstart"];
+
+    // Browsers block autoplay until the user interacts with the page, so a
+    // remembered "yes" only starts the music on the first interaction.
+    const handleFirstUserInteraction = () => {
+      audioRef.current?.play().catch(() => {});
+      setIsPlaying(true);
+      events.forEach((event) => {
+        document.removeEventListener(event, handleFirstUserInteraction);
+      });
+    };
+
     const consent = localStorage.getItem("musicConsent");
     const consentTime = localStorage.getItem("consentTime");
-    if (
+    const consentIsFresh =
       consent &&
       consentTime &&
       new Date(consentTime).getTime() + 3 * 24 * 60 * 60 * 1000 >
-        new Date().getTime()
-    ) {
-      setIsPlaying(consent === true);
-      if (consent === "true") {
-        ["click", "keydown", "touchstart"].forEach((event) => {
-          document.addEventListener(event, handleFurstUserInteraction);
-        });
-      }
-    } else {
-      setShowModal(true);
-    }
-  }, []);
+        new Date().getTime();
 
-  const handleFurstUserInteraction = () => {
-    const consent = localStorage.getItem("musicConsent");
-    if (consent === "true" && !isPlaying) {
-      audioRef.current.play();
-      setIsPlaying(true);
+    if (!consentIsFresh) {
+      setShowModal(true);
+      return;
     }
-    ["click", "keydown", "touchstart"].forEach((event) => {
-      document.removeEventListener(event, handleFurstUserInteraction);
-    });
-  };
+
+    if (consent === "true") {
+      events.forEach((event) => {
+        document.addEventListener(event, handleFirstUserInteraction);
+      });
+    }
+
+    return () => {
+      events.forEach((event) => {
+        document.removeEventListener(event, handleFirstUserInteraction);
+      });
+    };
+  }, []);
 
   const toggle = () => {
     const newState = !isPlaying;
-    setIsPlaying(!isPlaying);
-    console.log("ref je: ", audioRef.current);
-    !isPlaying ? audioRef.current.play() : audioRef.current.pause();
+    setIsPlaying(newState);
+    if (newState) {
+      audioRef.current?.play().catch(() => {});
+    } else {
+      audioRef.current?.pause();
+    }
     localStorage.setItem("musicConsent", String(newState));
     localStorage.setItem("consentTime", new Date().toISOString());
     setShowModal(false);
@@ -86,7 +98,7 @@ export const Sound = () => {
         <Modal onClose={() => setShowModal(false)} toggle={toggle} />
       )}
       <audio ref={audioRef} loop>
-        <source src="/audio/birds39-forest-20772.mp3" type="audio/mp3" />
+        <source src={`${basePath}/audio/birds39-forest-20772.mp3`} type="audio/mp3" />
         your browser does not support audio element.
       </audio>
       <motion.button
@@ -94,8 +106,7 @@ export const Sound = () => {
         animate={{ scale: 1 }}
         transition={{ delay: 1 }}
         className="w-10 h-10 xs:w-14 xs:h-14 text-foreground rounded-full flex items-center justify-center cursor-pointer z-50 p-2.5 xs:p-4 custom-bg"
-        aria-label={"home"}
-        name={"home"}
+        aria-label={isPlaying ? "Mute background music" : "Play background music"}
         onClick={toggle}
       >
         {isPlaying ? (

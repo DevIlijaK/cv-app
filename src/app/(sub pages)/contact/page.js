@@ -16,7 +16,7 @@ export default function Contact() {
       <article className="relative w-full flex flex-col items-center justify-center py-8 sm:py-0 space-y-8">
         <div className="flex flex-col items-center justify-center w-full sm:w-3/4 space-y-6 ">
           <h1 className="text-accent font-semibold text-center text-4xl capitalize">
-            summon the wizzard
+            summon the wizard
           </h1>
           <p className="text-sm sm:text-base text-center font-light">
             Greetings, seeker of arcane knowledge! If you&apos;ve wandered into

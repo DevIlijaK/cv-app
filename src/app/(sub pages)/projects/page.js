@@ -11,7 +11,13 @@ const FullMoonSwordModel = dynamic(
   { ssr: false }
 );
 
-export default function Home() {
+export const metadata = {
+  title: "Projects",
+  description:
+    "Products Ilija Košanin has built: Kosmonaut, Pomiri AI, Pero AI, ESGflow, and more.",
+};
+
+export default function Projects() {
   return (
     <>
       <Image

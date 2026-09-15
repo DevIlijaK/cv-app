@@ -1,9 +1,10 @@
 "use client";
 
 import { useGLTF } from "@react-three/drei";
+import { basePath } from "@/app/data";
 
 export default function WizardModel(props) {
-  const { nodes, materials } = useGLTF("/models/wizard-transformed.glb");
+  const { nodes, materials } = useGLTF(`${basePath}/models/wizard-transformed.glb`);
   return (
     <group
       {...props}
@@ -215,4 +216,4 @@ export default function WizardModel(props) {
   );
 }
 
-useGLTF.preload("/models/wizard-transformed.glb");
+useGLTF.preload(`${basePath}/models/wizard-transformed.glb`);

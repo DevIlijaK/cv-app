@@ -4,10 +4,11 @@ import React, { useEffect } from "react";
 import { useGraph } from "@react-three/fiber";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { SkeletonUtils } from "three-stdlib";
+import { basePath } from "@/app/data";
 
 export function NunuModel(props) {
   const group = React.useRef();
-  const { scene, animations } = useGLTF("/models/nunu.glb");
+  const { scene, animations } = useGLTF(`${basePath}/models/nunu.glb`);
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
   const { nodes, materials } = useGraph(clone);
   const { actions } = useAnimations(animations, group);
@@ -90,4 +91,4 @@ export function NunuModel(props) {
   );
 }
 
-useGLTF.preload("/models/nunu.glb");
+useGLTF.preload(`${basePath}/models/nunu.glb`);

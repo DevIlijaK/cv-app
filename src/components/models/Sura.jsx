@@ -2,10 +2,11 @@
 
 import { useRef, useEffect } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
+import { basePath } from "@/app/data";
 
 export default function SuraModel(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF("/models/sura.glb");
+  const { nodes, materials, animations } = useGLTF(`${basePath}/models/sura.glb`);
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
@@ -62,4 +63,4 @@ export default function SuraModel(props) {
   );
 }
 
-useGLTF.preload("/scene-transformed.glb");
+useGLTF.preload(`${basePath}/models/sura.glb`);

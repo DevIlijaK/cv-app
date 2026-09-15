@@ -3,10 +3,11 @@
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
+import { basePath } from "@/app/data";
 
 export default function FullMoonSwordModel(props) {
   const sword = useRef();
-  const { nodes, materials } = useGLTF("/models/full-moon-sword.glb");
+  const { nodes, materials } = useGLTF(`${basePath}/models/full-moon-sword.glb`);
   useFrame((state, delta) => {
     sword.current.rotation.y += 0.005;
   });
@@ -30,4 +31,4 @@ export default function FullMoonSwordModel(props) {
   );
 }
 
-useGLTF.preload("/models/full-moon-sword.glb");
+useGLTF.preload(`${basePath}/models/full-moon-sword.glb`);

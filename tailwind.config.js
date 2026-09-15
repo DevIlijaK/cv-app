@@ -1,5 +1,3 @@
-const { transform } = require("next/dist/build/swc");
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -10,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        inter: ["var(--font-inter"],
+        inter: ["var(--font-inter)"],
       },
       colors: {
         background: "rgb(var(--background))",

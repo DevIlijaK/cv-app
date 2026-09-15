@@ -20,47 +20,8 @@ export default function Home() {
         className="-z-50 w-full h-screen object-cover object-center opacity-25"
         fill
       />
-      {/* <div className="flex">
-        <div className="w-28 h-28">
-          <Image
-            src={ninja}
-            alt="ninja-image"
-            width={112} // 28 * 4 = 112 pixels for w-28 (Tailwind CSS multiplier)
-            height={112}
-            objectFit="contain"
-          />
-        </div>
-        <div className="w-28 h-28">
-          <Image
-            src={mage}
-            alt="mage-image"
-            width={112}
-            height={112}
-            objectFit="contain"
-          />
-        </div>
-        <div className="w-28 h-28">
-          <Image
-            src={sura}
-            alt="sura-image"
-            width={112}
-            height={112}
-            objectFit="contain"
-          />
-        </div>
-        <div className="w-28 h-28">
-          <Image
-            src={shaman}
-            alt="shaman-image"
-            width={112}
-            height={112}
-            objectFit="contain"
-          />
-        </div>
-      </div> */}
 
       <div className="w-full h-screen">
-        {/* Header */}
         <Navigation />
         <RenderModel>
           <WarriorModel />

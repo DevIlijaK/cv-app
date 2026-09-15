@@ -2,11 +2,12 @@
 import React from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { basePath } from "@/app/data";
 
 export default function LichKingHelmetModel(props) {
   const group = React.useRef();
   const { nodes, materials, animations } = useGLTF(
-    "/models/lich-king-helmet.glb"
+    `${basePath}/models/lich-king-helmet.glb`
   );
   const { actions } = useAnimations(animations, group);
 
@@ -46,4 +47,4 @@ export default function LichKingHelmetModel(props) {
   );
 }
 
-useGLTF.preload("/models/lich-king-helmet.glb");
+useGLTF.preload(`${basePath}/models/lich-king-helmet.glb`);

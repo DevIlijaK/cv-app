@@ -29,15 +29,25 @@ export default function ContactForm() {
   } = useForm();
 
   const sendEmail = (params) => {
-    console.log("params: ", params);
+    const serviceId = process.env.NEXT_PUBLIC_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      toast.error(
+        "The contact form is not configured yet, please email me directly instead."
+      );
+      return;
+    }
+
     const toastId = toast.loading("Sending your message, please wait...");
     emailjs
       .send(
-        process.env.NEXT_PUBLIC_SERVICE_ID,
-        process.env.NEXT_PUBLIC_TEMPLATE_ID,
+        serviceId,
+        templateId,
         params,
         {
-          publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
+          publicKey,
           limitRate: {
             throttle: 5000,
           },
@@ -50,7 +60,7 @@ export default function ContactForm() {
             { id: toastId }
           );
         },
-        (error) => {
+        () => {
           toast.error(
             "There was an error while sending your message, please try later!",
             {
@@ -100,7 +110,7 @@ export default function ContactForm() {
 
         <motion.input
           variants={item}
-          type="text"
+          type="email"
           placeholder="Email"
           {...register("email", {
             required: "Email is required!",
@@ -115,9 +125,9 @@ export default function ContactForm() {
           <span className="text-red-500 text-sm">{errors.email.message}</span>
         )}
 
-        <motion.input
+        <motion.textarea
           variants={item}
-          type="text"
+          rows={4}
           placeholder="Message"
           {...register("message", {
             required: "Message is required!",
@@ -126,11 +136,11 @@ export default function ContactForm() {
               message: "Message must be at least 10 characters long!",
             },
             maxLength: {
-              value: 256,
-              message: "Message must not exceed 256 characters!",
+              value: 1000,
+              message: "Message must not exceed 1000 characters!",
             },
           })}
-          className="w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg"
+          className="w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg resize-none"
         />
         {errors.message && (
           <span className="text-red-500 text-sm">{errors.message.message}</span>

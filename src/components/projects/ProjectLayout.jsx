@@ -11,7 +11,8 @@ export const ProjectLayout = ({ name, description, date, demoLink }) => {
   return (
     <NavLink
       variants={item}
-      target={"_blank"}
+      target="_blank"
+      rel="noopener noreferrer"
       href={demoLink}
       className="flex text-sm md:text-base cursor-pointer justify-between items-center w-full relative rounded-lg overflow-hidden p-4 md:p-6 custom-bg"
     >
@@ -21,7 +22,10 @@ export const ProjectLayout = ({ name, description, date, demoLink }) => {
       </div>
       <div className="self-end flex-1 mx-2 mb-1 bg-transparent border-b border-dashed border-muted" />
       <p className="text-muted sm:text-foreground">
-        {new Date(date).toDateString()}
+        {new Date(date).toLocaleDateString("en-US", {
+          month: "short",
+          year: "numeric",
+        })}
       </p>
     </NavLink>
   );

@@ -1,5 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import { ItemLayout } from "./item-layout";
+import {
+  community,
+  education,
+  experience,
+  featuredProject,
+  profile,
+  socialLinks,
+} from "@/app/data";
+
+const linkClass = "text-accent underline underline-offset-4";
 
 export const AboutDetails = () => {
   return (
@@ -14,76 +25,153 @@ export const AboutDetails = () => {
             Architect of Enchantment
           </h2>
           <p className="font-light text-xs sm:text-sm md:text-base">
-            In the ancient scrolls of JavaScript, it is said that the Architect
-            once whispered to the variables, and they aligned themselves
-            perfectly with the stars of the DOM. With a mere flick of his IDE,
-            functions unfold like enchanted spells, conjuring APIs from the void
-            and rendering pixels as if summoned by digital sorcery. Legend has
-            it that his code is so clean, the bugs themselves refuse to tread
-            near it—except for that one mythical bug that only appears at 2 AM
-            under a full moon, haunting the error logs with cryptic messages
-            like &quot;undefined is not a function.&quot; But fear not, for the
-            Architect&apos;s debugging prowess is as swift as his touch on the
-            keyboard, guiding lost bits and bytes back to harmony in the cosmic
-            grid of the cloud.
+            {profile.bio}
+          </p>
+          <p className="font-light text-xs sm:text-sm md:text-base">
+            I am a co-organizer of{" "}
+            <Link
+              href={community.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={linkClass}
+            >
+              {community.name}
+            </Link>
+            , the local JavaScript community, and co-founder of{" "}
+            <Link
+              href="https://www.kosmonaut.rs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={linkClass}
+            >
+              Kosmonaut
+            </Link>
+            , one coworking pass for Belgrade. Part-time, I act in short, fun,
+            and silly videos on social media.
           </p>
         </ItemLayout>
         <ItemLayout
           className={"col-span-full xs:col-span-6 lg:col-span-4 text-accent"}
         >
           <p className="font-semibold w-full text-left text-2xl sm:text-5xl">
-            {"25+ "} <sub className="font-semibold text-base">good friends</sub>
-          </p>
-        </ItemLayout>
-        <ItemLayout
-          className={"col-span-full xs:col-span-6 lg:col-span-4 text-accent"}
-        >
-          <p className="font-semibold w-full text-left text-2xl sm:text-5xl">
-            {"3+ "}
+            {"4+ "}
             <sub className="font-semibold text-base">years of experience</sub>
+          </p>
+        </ItemLayout>
+        <ItemLayout
+          className={"col-span-full xs:col-span-6 lg:col-span-4 text-accent"}
+        >
+          <p className="font-semibold w-full text-left text-2xl sm:text-5xl">
+            {"4 "}
+            <sub className="font-semibold text-base">products shipped</sub>
+          </p>
+        </ItemLayout>
+
+        {experience.map((job) => (
+          <ItemLayout
+            key={job.company}
+            className={"col-span-full lg:col-span-6 flex-col items-start"}
+          >
+            <div className="w-full">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+                <h2 className="text-lg md:text-xl text-left">
+                  {job.role}{" "}
+                  <span className="text-accent">@ {job.company}</span>
+                </h2>
+                <p className="text-muted text-sm">{job.period}</p>
+              </div>
+              <p className="text-muted text-sm text-left">{job.location}</p>
+            </div>
+            <p className="w-full font-light text-xs sm:text-sm md:text-base">
+              {job.summary}
+            </p>
+          </ItemLayout>
+        ))}
+
+        <ItemLayout
+          className={"col-span-full md:col-span-6 flex-col items-start"}
+        >
+          <div className="w-full flex flex-wrap items-baseline justify-between gap-x-4">
+            <h2 className="text-lg md:text-xl text-left">
+              {community.role}{" "}
+              <span className="text-accent">@ {community.name}</span>
+            </h2>
+            <p className="text-muted text-sm">{community.period}</p>
+          </div>
+          <p className="w-full font-light text-xs sm:text-sm md:text-base">
+            {community.summary}
+          </p>
+        </ItemLayout>
+
+        <ItemLayout
+          className={"col-span-full md:col-span-6 flex-col items-start"}
+        >
+          <div className="w-full flex flex-wrap items-baseline justify-between gap-x-4">
+            <h2 className="text-lg md:text-xl text-left">Education</h2>
+            <p className="text-muted text-sm">{education.period}</p>
+          </div>
+          <p className="w-full font-light text-xs sm:text-sm md:text-base">
+            {education.degree}, {education.school}
           </p>
         </ItemLayout>
 
         <ItemLayout className={"col-span-full md:col-span-4 p-0"}>
           <img
-            src="https://skillicons.dev/icons?i=nextjs,ts,git,graphql,java,nestjs,nodejs,postgres,docker,react,spring,tailwind,vscode,js,html,css&perline=4"
-            alt="Skill icons for Angular, Azure, Bootstrap, Bun, Docker, Elysia, Git, GitHub, GraphQL, Hibernate, HTMX, Java, Maven, NestJS, Next.js, Node.js, NPM, PostgreSQL, React, Spring, Supabase, Tailwind, Terraform, TypeScript, Vercel, VSCode, JavaScript, HTML, CSS, and WebAssembly"
+            src="https://skillicons.dev/icons?i=ts,react,nextjs,nodejs,nestjs,postgres,tailwind,vercel,docker,git,angular,spring,java,graphql,js,html&perline=4"
+            alt="Skill icons for TypeScript, React, Next.js, Node.js, NestJS, PostgreSQL, Tailwind, Vercel, Docker, Git, Angular, Spring, Java, GraphQL, JavaScript, and HTML"
             loading="lazy"
             className="w-auto h-auto max-w-full max-h-full"
           />
         </ItemLayout>
-        <ItemLayout className={"col-span-full md:col-span-4 p-0"}>
-          <img
-            src="https://github-readme-stats.vercel.app/api/top-langs?username=DevIlijaK&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false"
-            alt="IlijaDev"
-            loading="lazy"
-            className="w-full h-full"
-          />
+        <ItemLayout
+          className={"col-span-full md:col-span-4 flex-col items-start"}
+        >
+          <div className="w-full flex flex-wrap items-baseline justify-between gap-x-4">
+            <h2 className="text-lg md:text-xl text-left">
+              {featuredProject.name}
+            </h2>
+            <p className="text-muted text-sm">Featured</p>
+          </div>
+          <p className="w-full font-light text-xs sm:text-sm md:text-base">
+            {featuredProject.description}
+          </p>
+          <p className="w-full text-sm space-x-4">
+            <Link
+              href={featuredProject.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={linkClass}
+            >
+              Play
+            </Link>
+            <Link
+              href={featuredProject.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={linkClass}
+            >
+              Source
+            </Link>
+          </p>
         </ItemLayout>
-        {/* <ItemLayout className={"col-span-full md:col-span-8 p-0"}>
-          <img
-            src="https://github-readme-stats.vercel.app/api?username=DevIlijaK&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false"
-            alt="IlijaDev"
-            loading="lazy"
-            className="w-full h-full"
-          />
-        </ItemLayout> */}
-
-        {/* <ItemLayout className={"col-span-full md:col-span-6 !p-0"}>
-          <img
-            src="https://github-readme-streak-stats.herokuapp.com?user=DevIlijaK&theme=dark&hide_border=true&type=png&ring=FEFE5B&background=EB545400&currStreakLabel=FEFE5B"
-            alt="IlijaDev"
-            loading="lazy"
-            className="w-full h-full"
-          />
-        </ItemLayout> */}
-        <ItemLayout className={"col-span-full md:col-span-4 p-0"}>
-          <img
-            src="https://github-readme-stats.vercel.app/api/pin/?username=DevIlijaK&repo=mr_planet&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false&description_lines_count=2"
-            alt="IlijaDev"
-            loading="lazy"
-            className="w-full h-full"
-          />
+        <ItemLayout
+          className={"col-span-full md:col-span-4 flex-col items-start"}
+        >
+          <h2 className="w-full text-lg md:text-xl text-left">Find me</h2>
+          <ul className="w-full grid grid-cols-2 gap-x-4 gap-y-2 text-sm font-light">
+            {socialLinks.map((social) => (
+              <li key={social.label}>
+                <Link
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent"
+                >
+                  {social.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </ItemLayout>
       </div>
     </section>

@@ -3,16 +3,9 @@ import { FireFliesbackground } from "@/components/FireFliesBackground";
 import Image from "next/image";
 import bg from "../../../../public/background/about-background.png";
 import { AboutDetails } from "@/components/about";
-import dynamic from "next/dynamic";
 import { RenderModel } from "@/components/render-model";
 import { NunuModel } from "@/components/models/Nunu";
-
-const LichKingHelmetModel = dynamic(
-  () => import("@/components/models/LichKingHelmet"),
-  {
-    ssr: false,
-  }
-);
+import { profile } from "@/app/data";
 
 export default function About() {
   return (
@@ -31,13 +24,12 @@ export default function About() {
       </div>
 
       <div className="relative w-full h-screen flex flex-col items-center justify-center">
-        <div className="absolute w-full flex flex-col items-center text-center top-2/3 sm:top-[70%] -translate-y-1/2 left-1/2 -translate-x-1/2">
+        <div className="absolute w-full flex flex-col items-center text-center top-2/3 sm:top-[70%] -translate-y-1/2 left-1/2 -translate-x-1/2 space-y-2">
           <h1 className="font-bold text-5xl xs:text-6xl sm:text-7xl lg:text-8xl text-accent">
-            Ilija Košanin
+            {profile.name}
           </h1>
-          <p className="font-light text-foreground text-lg">
-            Full-Stack Software Engineer
-          </p>
+          <p className="font-light text-foreground text-lg">{profile.role}</p>
+          <p className="text-sm text-muted">{profile.openToWork}</p>
         </div>
       </div>
       <AboutDetails />
